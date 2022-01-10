@@ -1,10 +1,10 @@
 {% extends 'container.html' %}
 
 {% block content %}
-<div>
+<div class="field">
     <form action="{% url 'create_activity'  %}" method="post">
         {% csrf_token %}
-        {{form.as_p}}
+        {{form.as_div}}
         <input type="submit" value="Submit" />
     </form>
 </div>

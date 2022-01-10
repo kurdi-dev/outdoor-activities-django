@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>Outdoor Activities</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   </head>
   <body>
@@ -26,9 +26,22 @@
             Home
           </a>
     
-          <a class="navbar-item">
-            Documentation
+          <a class="navbar-item" href="https://github.com/kurdi-dev/outdoor-activities-django" rel="noopener noreferrer">
+            Source Code
           </a>
+
+          <div class="navbar-item">
+            <div class="field has-addons">
+              <p class="control">
+                <input class="input" type="text" placeholder="Find an activity">
+              </p>
+              <p class="control">
+                <button class="button">
+                  Search
+                </button>
+              </p>
+            </div>
+            </div>
         </div>
     
         <div class="navbar-end">
@@ -45,9 +58,7 @@
         </div>
       </div>
     </nav>
-  <section class="section">
-    <!-- {% include 'navbar.html' %} -->
-    <div class="container">
+    <div class="container is-widescreen">
         
 
         {% block content %}
@@ -56,7 +67,15 @@
         {% endblock %}  
       
     </div>
-  </section>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Outdoor Activities</strong> by <a href="https://github.com/kurdi-dev" rel="noopener noreferrer">Walid R. Rashed</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
