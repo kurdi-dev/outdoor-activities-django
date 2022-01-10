@@ -1,0 +1,25 @@
+{% extends 'container.html' %}
+
+{% block content %}
+
+<h1 class="title">Activity page</h1>
+<ul>
+{% for activity in activities %}
+    <li>
+        <dv>
+            <span>@{{activity.host.username}}</span>
+            <h1 class="title">
+                <a href="activity/{{activity.id}}">{{activity.name}}</a>
+            </h1>
+            <small>{{activity.category}}</small>
+            <a href="{% url 'update_activity' activity_id=activity.id  %}" >Edit activity</a>
+            <a href="{% url 'delete_activity' activity_id=activity.id  %}" >Delete activity</a>
+        </dv>
+        <hr/>
+    </li>
+    
+{% endfor %}
+</ul>
+
+<div><a href="{% url 'create_activity' %}">Create Activity</a></div>
+{% endblock %}  
