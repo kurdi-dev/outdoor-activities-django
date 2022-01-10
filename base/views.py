@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Activity
+from .models import Activity, Category
 from .forms import ActivityForm
 
 # Create your views here.
@@ -8,7 +8,8 @@ from .forms import ActivityForm
 
 def home(request):
     activities = Activity.objects.all()
-    context = {'activities':activities}
+    categories = Category.objects.all()
+    context = {'activities':activities, 'categories': categories}
     return render(request,'home.html',context)
 
 def activity(request,activity_id):

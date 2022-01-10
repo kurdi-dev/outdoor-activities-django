@@ -2,19 +2,22 @@
 
 {% block content %}
 
-<div class="columns">
+<div class="columns p-1">
     <!-- left section -->
     <div class="column is-one-quarter p-4">
-        <section class="hero is-small is-primary">
-            <div class="hero-body">
-              <p class="title">
-                Small hero
-              </p>
-              <p class="subtitle">
-                Small subtitle
-              </p>
-            </div>
-          </section>
+        <div class="mb-4">
+            <h5 class="title is-5">Activity Types</h5>
+        </div>
+        <ul>
+            <li>
+                <a href="{% url 'home' %}">All</a>
+            </li>
+            {% for category in categories %}
+            <li>
+                <a href="{% url 'home' %}?cat={{category.name}}">{{category.name}}</a>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 
     <!-- Center section -->
@@ -22,30 +25,50 @@
         <div class="is-flex is-flex-direction-row is-align-items-center is-justify-content-space-between mb-4">
             <div>
                 <h5 class="title is-5">Activities</h5>
-                <h6 class="subtitle is-6">Total 3 Activities found</h6>
+                <h6 class="subtitle is-6">There is total {{ activities|length }} activities.</h6>
             
             </div>
             <div><a class="button is-primary " href="{% url 'create_activity' %}" >Create Activity</a></div>
         </div>
-        <ul>
         {% for activity in activities %}
-            <li>
-                <dv>
-                    <span>@{{activity.host.username}}</span>
-                    <h1 class="title">
-                        <a href="activity/{{activity.id}}">{{activity.name}}</a>
-                    </h1>
-                    <small>{{activity.category}}</small>
-                    <a href="{% url 'update_activity' activity_id=activity.id  %}" >Edit activity</a>
-                    <a href="{% url 'delete_activity' activity_id=activity.id  %}" >Delete activity</a>
-                </dv>
-                <hr/>
-            </li>
+        <div class="card mb-4">
+            <header class="card-header">
+                <p class="card-header-title title is-4">
+                    {{activity.name}}
+                </p>
+              </header>
+            <div class="card-content">
+              <div class='is-flex is-flex-direction-row is-justify-content-space-between'>
+                <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-48x48">
+                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <p class="title is-5">{{activity.host.username}}</p>
+                      <p class="subtitle is-6">@{{activity.host.username}}</p>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="tag is-primary">{{activity.category}}</span>
+                  </div>
+              </div>
+          
+              <div class="content">
+                {{activity.description}}
+              </div>
+            </div>
+            <div class="is-flex is-flex-direction-row is-justify-content-flex-end">
+                <a href="{% url 'activity' activity_id=activity.id  %}" class=" button is-warning">View Activity</a>
+            </div>
+          </div>
+
+
+           
             
         {% endfor %}
-        </ul>
-
-        <div><a href="{% url 'create_activity' %}">Create Activity</a></div>
+        
     </div>
 
     <!-- Right section -->
